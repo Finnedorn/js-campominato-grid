@@ -1,12 +1,4 @@
 /*
-*Consegna*
-
-
-L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-Ogni cella ha un numero progressivo, da 1 a 100.
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-
 Bonus
 Solo se l'esercizio base funziona perfettamente: create una nuova cartella chiamata bonus e copiateci dentro tutti i files e cartelle dell'esercizio base tranne la cartella .git.
 Poi procedete ad implementare il bonus come segue.
@@ -23,8 +15,13 @@ function Minefield() {
     const btn = document.querySelector('button');
 
     btn.addEventListener('click', () => {
+        //richiamo il select dall'html
+        let level = document.getElementById('level').value;
+        console.log(level);
         //creo una costante per il numero delle caselle
-        const boxNum = 100;
+        let boxNum;
+        boxNum= levelCreator(level);
+        console.log(boxNum);
         //richiamo il div dove inserirò le box
         const field = document.getElementById('field');
         console.log(field);
@@ -44,6 +41,7 @@ function Minefield() {
         //aggiungo la classe al div
         box.classList.add('box');
         const boxWidth = Math.sqrt(howmanyboxes);
+        box.style.borderRadius = `10px`;
         box.style.width = `calc(100% / ${boxWidth})`;
         box.style.height = `calc(100% / ${boxWidth})`;
         //voglio inserire dei numeri dentro alle box quindi:
@@ -56,8 +54,18 @@ function Minefield() {
         });
         return box;
     };
-    
 };
 
 
+function levelCreator(difficulty) {
+    let el2;
+    if(difficulty === 'easy') {
+        el2 = 100; 
+    } else if(difficulty === 'normal') {
+        el2 = 81;
+    } else {
+        el2 = 49;
+    }
+    return el2;
+};
 

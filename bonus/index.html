@@ -11,8 +11,17 @@
 
 <body>
   <div class=" d-flex justify-content-center flex-column">
-    <div id="field" class="rounded-3 mt-3 m-auto"></div>
-    <button class="btn btn-primary my-3 mx-auto">Gioca</button>
+    <h1 class="mx-auto py-4">Campo Minato</h1>
+    <div id="field" class="rounded-4 mt-3 m-auto"></div>
+    <div class="my-3 mx-auto d-flex py-2">
+      <h3>Seleziona il livello di difficoltà</h3>
+      <select name="" id="level" class="mx-3 rounded-3">
+        <option value="easy">Facile</option>
+        <option value="normal">Normale</option>
+        <option value="difficile">Difficile</option>
+      </select>
+    </div>
+    <button class="btn btn-primary my-2 mx-auto btn-lg">Gioca</button>
   </div>
   <script src="js/script.js"></script>
 </body>
