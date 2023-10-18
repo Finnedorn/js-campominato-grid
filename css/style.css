@@ -9,16 +9,16 @@
 
 /*main*/
 
-#field {
+#playground {
     width: 600px;
     height: 600px;
-    background-color: var(--primary-blue);
+    background-color: blue;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.square {
+.box {
     border: 2px solid var(--primary-azure);
     display: flex;
     justify-content: center;
