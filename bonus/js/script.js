@@ -28,7 +28,7 @@ function Minefield() {
         //richiamo il div dove inserirò le box
         const field = document.getElementById('field');
         console.log(field);
-        //do un valore vuoto da riempire coi div delle box
+        //faccio in modo che prima di elaborare le boxes mi si svuoti il field
         field.innerHTML = '';
         //creo un ciclo per stampare le box
         for(let i = 1; i <= boxNum; i++) {
