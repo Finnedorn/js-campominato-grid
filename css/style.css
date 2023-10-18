@@ -5,17 +5,19 @@
     --primary-azure: #4361EE;
     --secondary-turquiose: #4CC9F0;
     --secondary-purple: #7209B7;
-};
+}
 
-/*main*/
 
-#playground {
+#field {
     width: 600px;
     height: 600px;
-    background-color: blue;
-    margin: 30px auto;
+    background-color: var(--primary-blue);
     display: flex;
     flex-wrap: wrap;
+}
+
+.pressed {
+    background-color: var(--secondary-turquiose);
 }
 
 .box {
@@ -25,11 +27,3 @@
     align-items: center;
     color: var(--secondary-turquiose);
 }
-
-.pressed {
-    background-color: var(--secondary-turquiose);
-}
-
-
-
-
