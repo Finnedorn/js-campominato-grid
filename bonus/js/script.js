@@ -14,13 +14,12 @@ function Minefield() {
     //richiamo il bottone dall'html
     const btn = document.querySelector('button');
     //mi creo una costante per le bombe sparse, in tutto 16
-    const numMines = 16;
     let gameOver = false;
 
     btn.addEventListener('click', () => {
 
         //creo un'array in cui andranno i numeri rng a cui attribuirò le bombe
-        const mines = [];
+        let mines = [];
 
         //richiamo il select dall'html
         let level = document.getElementById('level').value;
@@ -30,8 +29,7 @@ function Minefield() {
         boxNum= levelCreator(level);
         console.log(boxNum);
         //associo all'array il return della funzione minegenerator
-        mines = mineGenerator()
-
+        mines = mineGenerator(mines, boxNum);
         //richiamo il div dove inserirò le box
         const field = document.getElementById('field');
         console.log(field);
@@ -110,28 +108,30 @@ function levelCreator(difficulty) {
 };
 
 
-//voglio generare delle bombe
-function GetRndNumber(number) {
-    let  = Math.floor((Math.random() * number) + 1);
-    return ;
-};
+//uso il rng per generarmi le bombe in una funzione apparte
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
-//mi creo
+//mi creo una funzione che mi geenri le mine
 function mineGenerator(elArray, numOfBoxes) {
+    const numMines = 15;
     //creo un ciclo while che cicli fino a che mines non ha 16 elementi estratti a caso
-    while(mines.length <= numMines) {
+    while(elArray.length <= numMines) {
         //per ogni volta che cicla 
         //estraggo un numero da 1 a al massimo (in base a boxnum)
-        let mine = GetRndNumber(1, boxNum);
+        let mine = getRndInteger(1, numOfBoxes);
         //lo pusho nell'array
-        mines.push(mine);
+        elArray.push(mine);
         //ma se ho gia questo numero?
         //potrei usare un include:
         //se l'array non include questo elemento estratto rng, pushamelo in array!
-        if(!mines.includes(mine)) {
-            mines.push(mine);
+        console.log(mine);
+        if(!elArray.includes(mine)) {
+            elArray.push(mine);
         }
     };
+    console.log(elArray);
     return elArray;
 }
