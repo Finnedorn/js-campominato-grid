@@ -58,6 +58,12 @@ function Minefield() {
 
 
 function levelCreator(difficulty) {
+    
+    //due esempi di scrittura differente:
+
+    //let numSquare = (level === 'easy') ? : 100 (level === 'medium') ? 81 : 100;
+
+    /*
     let el2;
     if(difficulty === 'easy') {
         el2 = 100; 
@@ -66,6 +72,19 @@ function levelCreator(difficulty) {
     } else {
         el2 = 49;
     }
+    */
+
+    switch(difficulty) {
+        case 'easy':
+            el2 = 100;
+            break;
+        case 'normal':
+            el2 = 81;
+            break;
+        default:
+            el2 = 49;
+    }
     return el2;
 };
+
 
