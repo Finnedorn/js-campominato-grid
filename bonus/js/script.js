@@ -11,10 +11,17 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 Minefield();
 
 function Minefield() {
-
+    //richiamo il bottone dall'html
     const btn = document.querySelector('button');
+    //mi creo una costante per le bombe sparse, in tutto 16
+    const numMines = 16;
+    let gameOver = false;
 
     btn.addEventListener('click', () => {
+
+        //creo un'array in cui andranno i numeri rng a cui attribuirò le bombe
+        const mines = [];
+
         //richiamo il select dall'html
         let level = document.getElementById('level').value;
         console.log(level);
@@ -22,6 +29,9 @@ function Minefield() {
         let boxNum;
         boxNum= levelCreator(level);
         console.log(boxNum);
+        //associo all'array il return della funzione minegenerator
+        mines = mineGenerator()
+
         //richiamo il div dove inserirò le box
         const field = document.getElementById('field');
         console.log(field);
@@ -51,6 +61,18 @@ function Minefield() {
             box.classList.add('pressed');
             box.style.color = 'var(--primary-blue)';
             console.log('hai cliccato il tasto numero:' + index)
+            //ora metto la condizione che se la casella cliccata corrisponderà ad una delle caselle rng estratte dentro l'array mines allora esploderà!
+            //altrimenti si illuminerà normalmente 
+            if(mines.includes(parseInt(box.textContent))) {
+                box.classList.add('bomb');
+                box.style.color = 'var(--primary-blue)';
+                box.innerHTML = //inserisci icona bomba
+                gameOver = true; 
+            } else {
+                box.classList.add('pressed');
+                box.style.color = 'var(--primary-blue)';
+                console.log('hai cliccato il tasto numero:' + index)
+            }
         });
         return box;
     };
@@ -88,3 +110,28 @@ function levelCreator(difficulty) {
 };
 
 
+//voglio generare delle bombe
+function GetRndNumber(number) {
+    let  = Math.floor((Math.random() * number) + 1);
+    return ;
+};
+
+
+//mi creo
+function mineGenerator(elArray, numOfBoxes) {
+    //creo un ciclo while che cicli fino a che mines non ha 16 elementi estratti a caso
+    while(mines.length <= numMines) {
+        //per ogni volta che cicla 
+        //estraggo un numero da 1 a al massimo (in base a boxnum)
+        let mine = GetRndNumber(1, boxNum);
+        //lo pusho nell'array
+        mines.push(mine);
+        //ma se ho gia questo numero?
+        //potrei usare un include:
+        //se l'array non include questo elemento estratto rng, pushamelo in array!
+        if(!mines.includes(mine)) {
+            mines.push(mine);
+        }
+    };
+    return elArray;
+}
